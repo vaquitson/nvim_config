@@ -21,7 +21,7 @@ vim.api.nvim_create_user_command("DelMarks", function()
 
   vim.api.nvim_cmd({
     cmd = 'delmarks',
-    args = { '^.[]' },
+    args = { '^.[]<>' },
   },
   {})
 

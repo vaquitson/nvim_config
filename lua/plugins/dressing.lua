@@ -8,5 +8,5 @@ return {
         border = "rounded"
       }
     })
-  end 
+  end
 }
