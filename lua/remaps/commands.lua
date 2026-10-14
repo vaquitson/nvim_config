@@ -37,3 +37,8 @@ end,
 )
 
 
+vim.api.nvim_create_user_command("Diagnostics", function()
+  vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+end,
+{}
+)

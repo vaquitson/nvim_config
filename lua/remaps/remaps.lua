@@ -11,6 +11,13 @@ vim.api.nvim_create_user_command('ToggleWrap', function()
 end, {})
 
 
+vim.api.nvim_create_user_command("ToggleErr", function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+
+
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
@@ -40,8 +47,12 @@ vim.keymap.set("i", "<C-BS>", "<C-w>") -- delete word
 -- handle the copy to system clipboard --
 vim.keymap.set("v", "<C-c>", '"+y')
 
--- handel the single quotes ' '
-vim.keymap.set("v", "'", "di''<Left><Esc>p")
-vim.keymap.set("i", "'", "''<Left>")
-
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
+
+-- Quick Fix List
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+
+-- undotree
+--vim.cmd("packadd nvim.undotree")
+--vim.keymap.set("n", "<leader>u", require("undotree").open)
